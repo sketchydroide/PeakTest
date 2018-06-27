@@ -49,7 +49,7 @@ extension String {
     }
     
     func attributedString(withLetterSpacing spacing: CGFloat? = nil,
-                          lineHeight: Style.LineHeight? = nil,
+                          lineHeight: CGFloat? = nil,
                           textAlignment: NSTextAlignment? = .center,
                           textColor: UIColor? = nil) -> NSAttributedString {
         var attributes: [NSAttributedStringKey: Any] = [:]
@@ -60,7 +60,7 @@ extension String {
         }
         
         if let lineHeight = lineHeight {
-            style.minimumLineHeight = lineHeight.rawValue
+            style.minimumLineHeight = lineHeight
             attributes.updateValue(style, forKey: NSAttributedStringKey.paragraphStyle)
         }
         

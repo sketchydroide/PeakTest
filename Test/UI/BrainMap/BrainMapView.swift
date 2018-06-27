@@ -30,7 +30,7 @@ private enum Declaration {
                                   UIColor.PeakColor.Red.regular]
 }
 
-class BrainMapView: UIView {
+class BrainMapView: UIView, ShapeAnimation {
     
     private var yoursGraph: CAShapeLayer?
     private var ageGroupGraph: CAShapeLayer?
@@ -67,26 +67,26 @@ class BrainMapView: UIView {
         switch group {
         case .ageGroup:
             ageGroupGraph.opacity = Declaration.graphOpacity
-            animate(shape: ageGroupGraph, animateIn: true)
+            animate(shape: ageGroupGraph, animateIn: true, in: self)
             if professionGraph.opacity != 0.0 {
                 professionGraph.opacity = 0.0
-                animate(shape: professionGraph, animateIn: false)
+                animate(shape: professionGraph, animateIn: false, in: self)
             }
         case .profession:
             professionGraph.opacity = Declaration.graphOpacity
-            animate(shape: professionGraph, animateIn: true)
+            animate(shape: professionGraph, animateIn: true, in: self)
             if ageGroupGraph.opacity != 0.0 {
                 ageGroupGraph.opacity = 0.0
-                animate(shape: ageGroupGraph, animateIn: false)
+                animate(shape: ageGroupGraph, animateIn: false, in: self)
             }
         default:
             if ageGroupGraph.opacity != 0.0 {
                 ageGroupGraph.opacity = 0.0
-                animate(shape: ageGroupGraph, animateIn: false)
+                animate(shape: ageGroupGraph, animateIn: false, in: self)
             }
             if professionGraph.opacity != 0.0 {
                 professionGraph.opacity = 0.0
-                animate(shape: professionGraph, animateIn: false)
+                animate(shape: professionGraph, animateIn: false, in: self)
             }
         }
     }
@@ -208,61 +208,7 @@ class BrainMapView: UIView {
         return scoreView
     }
     
-    private func animate(shape:CAShapeLayer, animateIn: Bool) {
-        
-        let opacityFromValue: Float
-        let opacityToValue: Float
-        let scaleFromValue: Float
-        let scaleToValue: Float
-        let positionFromValue: CGPoint
-        let positionToValue: CGPoint
-        
-        if animateIn {
-            opacityFromValue = 0.0
-            opacityToValue = Declaration.graphOpacity
-            scaleFromValue = 0.0
-            scaleToValue = 1.0
-            positionFromValue = makeFrameCenter(view: self)
-            positionToValue = CGPoint.zero
-        } else {
-            opacityFromValue = Declaration.graphOpacity
-            opacityToValue = 0.0
-            scaleFromValue = 1.0
-            scaleToValue = 0.0
-            positionFromValue = CGPoint.zero
-            positionToValue =  makeFrameCenter(view: self)
-        }
-        
-        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
-        opacityAnimation.duration = Declaration.animationTime
-        opacityAnimation.fromValue = opacityFromValue
-        opacityAnimation.toValue = opacityToValue
-        opacityAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scaleAnimation.duration = Declaration.animationTime
-        scaleAnimation.fromValue =  scaleFromValue
-        scaleAnimation.toValue = scaleToValue
-        scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        
-        let positionAnimation = CABasicAnimation(keyPath: "position")
-        positionAnimation.duration = Declaration.animationTime
-        positionAnimation.fromValue = positionFromValue
-        positionAnimation.toValue = positionToValue
-        positionAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        
-        shape.add(scaleAnimation, forKey: "transform.scale")
-        shape.add(positionAnimation, forKey: "position")
-        shape.add(opacityAnimation, forKey: "opacity")
-    }
-    
     //MARK: - Math calculations for angles and points
-    
-    private func makePoint(at angle: CGFloat, from point: CGPoint, at distance: CGFloat) -> CGPoint {
-        let x = point.x + distance*cos(angle)
-        let y = point.y + distance*sin(angle)
-        return CGPoint(x: x, y: y)
-    }
     
     private func makeAngleForScores(total: Int) -> (angleBetweenLines: CGFloat, startAngle: CGFloat) {
         let angleBetweenLines = CGFloat.pi*2.0/CGFloat(total)
@@ -270,8 +216,10 @@ class BrainMapView: UIView {
         return (angleBetweenLines, startAngle)
     }
     
-    func makeFrameCenter(view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.width/2.0, y: view.frame.height/2.0)
+    private func makePoint(at angle: CGFloat, from point: CGPoint, at distance: CGFloat) -> CGPoint {
+        let x = point.x + distance*cos(angle)
+        let y = point.y + distance*sin(angle)
+        return CGPoint(x: x, y: y)
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-private enum Metrics {
+private struct Metrics {
     static let multilineMaxWidth: CGFloat = 80.0
     static let singleLineMaxWidth: CGFloat = 200.0
 }
