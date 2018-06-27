@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamSSm-Medium.ttf">
+            <string>GothamSSm-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="ScoreView" customModule="Test" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="41"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R04-az-biP">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="MM5-3m-13T"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GothamSSm-Medium" family="Gotham SSm" pointSize="14"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLl-mJ-WUa">
+                    <rect key="frame" x="0.0" y="24" width="80" height="17"/>
+                    <fontDescription key="fontDescription" name="GothamSSm-Medium" family="Gotham SSm" pointSize="14"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="MLl-mJ-WUa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="D2a-vs-xtK"/>
+                <constraint firstItem="R04-az-biP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="INr-CS-daY"/>
+                <constraint firstAttribute="trailing" secondItem="R04-az-biP" secondAttribute="trailing" id="KpE-2H-Orj"/>
+                <constraint firstAttribute="bottom" secondItem="MLl-mJ-WUa" secondAttribute="bottom" id="Tkf-ez-wHE"/>
+                <constraint firstItem="MLl-mJ-WUa" firstAttribute="top" secondItem="R04-az-biP" secondAttribute="bottom" constant="4" id="dhO-Ca-lLW"/>
+                <constraint firstItem="R04-az-biP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lHk-q2-IVX"/>
+                <constraint firstAttribute="trailing" secondItem="MLl-mJ-WUa" secondAttribute="trailing" id="v84-HZ-9ZX"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="labelsVerticalConstraint" destination="dhO-Ca-lLW" id="Zck-FG-gSt"/>
+                <outlet property="scoreTitle" destination="R04-az-biP" id="KwD-Mf-LuJ"/>
+                <outlet property="scoreValue" destination="MLl-mJ-WUa" id="t1V-9W-qb7"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="57"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Test
+
+  Created by Andre_Fonseca on 14/12/2017.
+  Copyright © 2017 Andre_Fonseca. All rights reserved.
+*/
+
+"Your Performance" = "Your Performance";
+"YOUR PEAK BRAIN MAP\u{2122}" = "YOUR PEAK BRAIN MAP\u{2122}";
+"Review and compare how you're performing in each brain skill category" = "Review and compare how you're performing in each brain skill category";
+"SHARE" = "SHARE";
+"You" = "You";
+"Age Group" = "Age Group";
+"Profession" = "Profession";
+"Peak Brain Score" = "Peak Brain Score";
+"Memory" = "Memory";
+"Problem Solving" = "Problem Solving";
+"Language" = "Language";
+"Mental Agility" = "Mental Agility";
+"Focus" = "Focus";
+"Extra Catecory" = "Extra Category";
