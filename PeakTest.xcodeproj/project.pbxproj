@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E3DC42520E51BFF008AA1DB /* CGPoint+PeakTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3DC42420E51BFF008AA1DB /* CGPoint+PeakTest.swift */; };
+		0E3DC42720E51EA8008AA1DB /* DividedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3DC42620E51EA8008AA1DB /* DividedCircle.swift */; };
 		0EEE64D420E3A594008D477F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEE64D320E3A594008D477F /* Animations.swift */; };
 		345CFEB61FDDDE8100D9330C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345CFEB51FDDDE8100D9330C /* AppDelegate.swift */; };
 		345CFEB81FDDDE8100D9330C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345CFEB71FDDDE8100D9330C /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		0E3DC42420E51BFF008AA1DB /* CGPoint+PeakTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+PeakTest.swift"; sourceTree = "<group>"; };
+		0E3DC42620E51EA8008AA1DB /* DividedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividedCircle.swift; sourceTree = "<group>"; };
 		0EEE64D320E3A594008D477F /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		345CFEB21FDDDE8100D9330C /* PeakTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeakTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		345CFEB51FDDDE8100D9330C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				34749E491FE08645001FA139 /* BrainScoreModel.swift */,
 				34749E4D1FE08E1D001FA139 /* BrainScoreRepository.swift */,
 				34E93ACC1FE5B18200853B32 /* ABTestApi.swift */,
+				0E3DC42620E51EA8008AA1DB /* DividedCircle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				345CFEE51FDEBDDB00D9330C /* BrainMapView.swift in Sources */,
 				0E3DC42520E51BFF008AA1DB /* CGPoint+PeakTest.swift in Sources */,
 				34E93ACD1FE5B18200853B32 /* ABTestApi.swift in Sources */,
+				0E3DC42720E51EA8008AA1DB /* DividedCircle.swift in Sources */,
 				34FF19121FE3308400850A00 /* Style.swift in Sources */,
 				34FF19101FE3305800850A00 /* String+Test.swift in Sources */,
 				345CFEB61FDDDE8100D9330C /* AppDelegate.swift in Sources */,

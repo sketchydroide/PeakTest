@@ -113,7 +113,7 @@ class BrainMapView: UIView, ShapeAnimation {
     
     private func drawLines(view: UIView,
                            total: Int) {
-        let angles = makeAngleForScores(total: total)
+        let angles = DividedCircle(number: total)
         var currentAngle = angles.startAngle
         
         for index in 0..<total {
@@ -139,9 +139,32 @@ class BrainMapView: UIView, ShapeAnimation {
         }
     }
     
+    private func drawGraph(view: UIView,
+                           scores: [ScoreModel],
+                           graphColor: UIColor) -> CAShapeLayer? {
+        let angles = DividedCircle(number: scores.count)
+        var currentAngle = angles.startAngle
+        var graphPoints: Array<CGPoint> = []
+        
+        for index in 0..<scores.count {
+            let score = scores[index]
+            let distanceToCenter = Metrics.lineLenght * CGFloat(score.value)/CGFloat(score.maxScore)
+            let graphPoint = CGPoint(at: distanceToCenter,
+                                     from: makeFrameCenter(view: view),
+                                     with: currentAngle)
+            
+            graphPoints.append(graphPoint)
+            //Update Current Angle for next iteration
+            currentAngle += angles.angleBetweenLines
+        }
+        
+        return drawShape(points: graphPoints,
+                         color: graphColor)
+    }
+    
     private func addScoreViews(view: UIView,
                                scores: [ScoreModel]) {
-        let angles = makeAngleForScores(total: scores.count)
+        let angles = DividedCircle(number: scores.count)
         var currentAngle = angles.startAngle
         
         for index in 0..<scores.count {
@@ -160,29 +183,6 @@ class BrainMapView: UIView, ShapeAnimation {
             //Update Current Angle for next iteration
             currentAngle += angles.angleBetweenLines
         }
-    }
-    
-    private func drawGraph(view: UIView,
-                           scores: [ScoreModel],
-                           graphColor: UIColor) -> CAShapeLayer? {
-        let angles = makeAngleForScores(total: scores.count)
-        var currentAngle = angles.startAngle
-        var graphPoints: Array<CGPoint> = []
-        
-        for index in 0..<scores.count {
-            let score = scores[index]
-            let distanceToCenter = Metrics.lineLenght * CGFloat(score.value)/CGFloat(score.maxScore)
-            let graphPoint = CGPoint(at: distanceToCenter,
-                                     from: makeFrameCenter(view: view),
-                                     with: currentAngle)
-            
-            graphPoints.append(graphPoint)
-            //Update Current Angle for next iteration
-            currentAngle += angles.angleBetweenLines
-        }
-        
-        return drawShape(points: graphPoints,
-                         color: graphColor)
     }
     
     private func makeScoreView(score: ScoreModel,
@@ -206,14 +206,6 @@ class BrainMapView: UIView, ShapeAnimation {
         scoreView.frame = CGRect(origin: CGPoint(x: originX, y: originY), size: scoreView.frame.size)
         
         return scoreView
-    }
-    
-    //MARK: - Math calculations for angles and points
-    
-    private func makeAngleForScores(total: Int) -> (angleBetweenLines: CGFloat, startAngle: CGFloat) {
-        let angleBetweenLines = CGFloat.pi*2.0/CGFloat(total)
-        let startAngle = -CGFloat.pi/2.0
-        return (angleBetweenLines, startAngle)
     }
 }
 
