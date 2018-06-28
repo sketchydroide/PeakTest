@@ -119,12 +119,12 @@ class BrainMapView: UIView, ShapeAnimation {
         for index in 0..<total {
             
             let viewCenter = makeFrameCenter(view: view)
-            let endPoint = makePoint(at: currentAngle,
-                                     from: viewCenter,
-                                     at: Metrics.lineLenght)
-            let ballPoint = makePoint(at: currentAngle,
-                                      from: viewCenter,
-                                      at: Metrics.lineLenght + Metrics.categoryBallRadius)
+            let endPoint = CGPoint(at: Metrics.lineLenght,
+                                   from: viewCenter,
+                                   with: currentAngle)
+            let ballPoint = CGPoint(at: Metrics.lineLenght + Metrics.categoryBallRadius,
+                                    from: viewCenter,
+                                    with: currentAngle)
             
             drawLine(starting: makeFrameCenter(view: view),
                      ending: endPoint,
@@ -146,9 +146,9 @@ class BrainMapView: UIView, ShapeAnimation {
         
         for index in 0..<scores.count {
             let viewCenter = makeFrameCenter(view: view)
-            let offsetPoint = makePoint(at: currentAngle,
-                                        from: viewCenter,
-                                        at: Metrics.lineLenght + Metrics.categoryBallRadius)
+            let offsetPoint = CGPoint(at: Metrics.lineLenght + Metrics.categoryBallRadius,
+                                      from: viewCenter,
+                                      with: currentAngle)
             
             let scoreView = makeScoreView(score: scores[index],
                                           isFirstView: index == 0,
@@ -172,11 +172,11 @@ class BrainMapView: UIView, ShapeAnimation {
         for index in 0..<scores.count {
             let score = scores[index]
             let distanceToCenter = Metrics.lineLenght * CGFloat(score.value)/CGFloat(score.maxScore)
-            let point = makePoint(at: currentAngle,
-                                  from: makeFrameCenter(view: view),
-                                  at: distanceToCenter)
+            let graphPoint = CGPoint(at: distanceToCenter,
+                                     from: makeFrameCenter(view: view),
+                                     with: currentAngle)
             
-            graphPoints.append(point)
+            graphPoints.append(graphPoint)
             //Update Current Angle for next iteration
             currentAngle += angles.angleBetweenLines
         }
@@ -215,11 +215,6 @@ class BrainMapView: UIView, ShapeAnimation {
         let startAngle = -CGFloat.pi/2.0
         return (angleBetweenLines, startAngle)
     }
-    
-    private func makePoint(at angle: CGFloat, from point: CGPoint, at distance: CGFloat) -> CGPoint {
-        let x = point.x + distance*cos(angle)
-        let y = point.y + distance*sin(angle)
-        return CGPoint(x: x, y: y)
-    }
 }
+
 
